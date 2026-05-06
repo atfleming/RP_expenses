@@ -9,7 +9,6 @@
     --bg:         #0d0f2b;
     --surface:    #131630;
     --card:       #1a1e45;
-    --card-hover: #1f2450;
     --border:     #2a2f6a;
     --blue:       #3b40d4;
     --blue-bright:#4f55e8;
@@ -24,207 +23,118 @@
     --success:    #34d399;
     --success-dim:rgba(52,211,153,.15);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         background: var(--bg); color: var(--off-white); min-height: 100vh; }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: var(--bg);
-    color: var(--off-white);
-    min-height: 100vh;
-  }
-
-  /* ── NAV BAR ── */
-  nav {
-    background: var(--blue);
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 20px rgba(0,0,0,.5);
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
-  }
-  .nav-logo .horse { font-size: 1.5rem; }
-  .nav-logo .brand-name {
-    font-size: 1.1rem; font-weight: 800;
-    letter-spacing: .08em; color: var(--white);
-    text-transform: uppercase;
-  }
+  /* NAV */
+  nav { background: var(--blue); padding: 0 40px; display: flex; align-items: center;
+        justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100;
+        box-shadow: 0 2px 20px rgba(0,0,0,.5); }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo .brand-name { font-size: 1.1rem; font-weight: 800; letter-spacing: .08em;
+                          color: var(--white); text-transform: uppercase; }
   .nav-links { display: flex; gap: 24px; list-style: none; }
   .nav-links a { color: rgba(255,255,255,.75); text-decoration: none;
                  font-size: .85rem; font-weight: 500; letter-spacing:.04em; }
   .nav-links a:hover { color: var(--cyan); }
 
-  /* ── HERO BANNER ── */
-  .hero {
-    background: linear-gradient(135deg, var(--blue) 0%, #2428b8 50%, #1a1e6e 100%);
-    padding: 42px 40px 36px;
-    border-bottom: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, var(--cyan-glow) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    font-size: .72rem; font-weight: 700; letter-spacing: .18em;
-    color: var(--cyan); text-transform: uppercase; margin-bottom: 6px;
-  }
-  .hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 900; color: var(--white);
-    text-transform: uppercase; letter-spacing: .04em;
-    line-height: 1; margin-bottom: 10px;
-  }
-  .hero p {
-    color: rgba(255,255,255,.65); font-size: .9rem; max-width: 560px;
-  }
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--blue) 0%, #2428b8 50%, #1a1e6e 100%);
+          padding: 42px 40px 36px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0;
+                  background: radial-gradient(ellipse at 80% 50%, var(--cyan-glow) 0%, transparent 60%);
+                  pointer-events: none; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; color: var(--white);
+             text-transform: uppercase; letter-spacing: .04em; line-height: 1; margin-bottom: 10px; }
+  .hero p { color: rgba(255,255,255,.65); font-size: .9rem; max-width: 560px; }
 
-  /* ── MAIN CONTENT ── */
-  .content { max-width: 960px; margin: 0 auto; padding: 36px 24px 60px; }
-
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 28px 32px; margin-bottom: 24px;
-    box-shadow: 0 4px 24px rgba(0,0,0,.3);
-  }
-
-  .section-label {
-    font-size: .7rem; font-weight: 700; letter-spacing: .15em;
-    text-transform: uppercase; color: var(--cyan); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-label::after {
-    content: ""; flex: 1; height: 1px; background: var(--border);
-  }
+  /* LAYOUT */
+  .content { max-width: 1060px; margin: 0 auto; padding: 36px 24px 60px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+          padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+  .section-label { font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+                   color: var(--cyan); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media(max-width:600px){ .grid2 { grid-template-columns: 1fr; } }
 
-  label { display: block; font-size: .8rem; font-weight: 600;
-          color: var(--muted); margin-bottom: 5px; letter-spacing: .04em; }
-
+  label { display: block; font-size: .8rem; font-weight: 600; color: var(--muted);
+          margin-bottom: 5px; letter-spacing: .04em; }
   input, select, textarea {
-    width: 100%; padding: 10px 13px;
-    background: var(--surface); border: 1.5px solid var(--border);
-    border-radius: 8px; color: var(--white); font-size: .9rem;
-    transition: border-color .15s, box-shadow .15s;
+    width: 100%; padding: 10px 13px; background: var(--surface);
+    border: 1.5px solid var(--border); border-radius: 8px;
+    color: var(--white); font-size: .9rem; transition: border-color .15s, box-shadow .15s;
   }
   input::placeholder, textarea::placeholder { color: var(--muted); }
-  input:focus, select:focus, textarea:focus {
-    outline: none; border-color: var(--cyan);
-    box-shadow: 0 0 0 3px var(--cyan-dim);
-  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px var(--cyan-dim); }
   select { cursor: pointer; }
   select option { background: var(--card); }
-  textarea { resize: vertical; min-height: 72px; }
 
-  /* ── LINE ITEMS TABLE ── */
+  /* TABLE */
   .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; min-width: 680px; }
-  thead th {
-    background: rgba(0,200,232,.08); color: var(--cyan);
-    font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    padding: 11px 10px; border-bottom: 1px solid var(--border); text-align: left;
-  }
+  table { width: 100%; border-collapse: collapse; min-width: 860px; }
+  thead th { background: rgba(0,200,232,.08); color: var(--cyan); font-size: .7rem; font-weight: 700;
+             letter-spacing: .1em; text-transform: uppercase; padding: 11px 10px;
+             border-bottom: 1px solid var(--border); text-align: left; }
   tbody tr { border-bottom: 1px solid rgba(42,47,106,.6); }
   tbody tr:last-child { border-bottom: none; }
   tbody td { padding: 8px 6px; vertical-align: top; }
-  tbody td input, tbody td select {
-    padding: 8px 10px; font-size: .85rem;
-  }
+  tbody td input, tbody td select { padding: 8px 10px; font-size: .85rem; }
   td.del-col { width: 40px; text-align: center; vertical-align: middle; }
-  .del-btn {
-    background: none; border: none; cursor: pointer; color: var(--muted);
-    font-size: 1.3rem; padding: 4px 6px; border-radius: 6px; line-height:1;
-    transition: color .15s, background .15s;
-  }
+  .del-btn { background: none; border: none; cursor: pointer; color: var(--muted);
+             font-size: 1.3rem; padding: 4px 6px; border-radius: 6px; line-height:1;
+             transition: color .15s, background .15s; }
   .del-btn:hover { color: var(--danger); background: var(--danger-dim); }
   tfoot td { padding: 12px 6px; }
-
-  .add-btn {
-    background: var(--cyan-dim); color: var(--cyan);
-    border: 1.5px dashed rgba(0,200,232,.4);
-    border-radius: 8px; padding: 8px 18px; cursor: pointer;
-    font-size: .85rem; font-weight: 700; letter-spacing:.04em;
-    transition: background .15s, border-color .15s;
-  }
+  .add-btn { background: var(--cyan-dim); color: var(--cyan); border: 1.5px dashed rgba(0,200,232,.4);
+             border-radius: 8px; padding: 8px 18px; cursor: pointer; font-size: .85rem;
+             font-weight: 700; letter-spacing:.04em; transition: background .15s, border-color .15s; }
   .add-btn:hover { background: rgba(0,200,232,.2); border-color: var(--cyan); }
 
-  .total-bar {
-    text-align: right; margin-top: 14px;
-    font-size: 1.1rem; font-weight: 800; color: var(--white);
+  /* PER-ROW RECEIPT UPLOAD */
+  td.receipt-col { width: 160px; vertical-align: top; padding-top: 10px; }
+  .receipt-upload-btn {
+    display: flex; align-items: center; gap: 5px;
+    background: var(--cyan-dim); color: var(--cyan);
+    border: 1px dashed rgba(0,200,232,.4); border-radius: 6px;
+    padding: 5px 10px; cursor: pointer; font-size: .78rem; font-weight: 700;
+    transition: background .15s; white-space: nowrap; width: 100%;
   }
+  .receipt-upload-btn:hover { background: rgba(0,200,232,.2); }
+  .row-chips { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+  .row-chip {
+    display: flex; align-items: center; justify-content: space-between; gap: 4px;
+    background: rgba(0,200,232,.08); border: 1px solid rgba(0,200,232,.2);
+    border-radius: 4px; padding: 3px 7px; font-size: .72rem; color: var(--cyan);
+    max-width: 100%;
+  }
+  .row-chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex:1; }
+  .row-chip button { background: none; border: none; cursor: pointer; color: var(--muted);
+                     font-size: .9rem; line-height:1; padding: 0; flex-shrink:0; }
+  .row-chip button:hover { color: var(--danger); }
+
+  .total-bar { text-align: right; margin-top: 14px; font-size: 1.1rem; font-weight: 800; color: var(--white); }
   .total-bar span { color: var(--cyan); }
 
-  /* ── FILE UPLOAD ── */
-  .drop-zone {
-    border: 2px dashed var(--border); border-radius: 12px; padding: 32px;
-    text-align: center; cursor: pointer;
-    transition: border-color .2s, background .2s;
-    background: var(--surface);
-  }
-  .drop-zone:hover, .drop-zone.drag-over {
-    border-color: var(--cyan); background: var(--cyan-dim);
-  }
-  .drop-zone svg { color: var(--cyan); margin-bottom: 10px; }
-  .drop-zone p { color: var(--muted); font-size: .9rem; }
-  .drop-zone strong { color: var(--cyan); }
-  .drop-zone small { display:block; margin-top:4px; font-size:.78rem; color: var(--muted); }
-  #fileInput { display: none; }
-
-  .file-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .file-chip {
-    display: flex; align-items: center; gap: 6px;
-    background: var(--cyan-dim); color: var(--cyan);
-    border: 1px solid rgba(0,200,232,.25);
-    border-radius: 20px; padding: 5px 13px;
-    font-size: .8rem; font-weight: 600;
-  }
-  .file-chip button {
-    background: none; border: none; cursor: pointer;
-    color: var(--cyan); font-size: 1.1rem; line-height:1; padding: 0 2px;
-  }
-  .file-chip button:hover { color: var(--danger); }
-
-  /* ── CONFIRM ── */
-  .confirm-row {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 16px; background: var(--surface);
-    border: 1.5px solid var(--border); border-radius: 10px;
-  }
-  .confirm-row input[type=checkbox] {
-    width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
-    accent-color: var(--cyan); cursor: pointer;
-  }
+  /* CONFIRM & SUBMIT */
+  .confirm-row { display: flex; align-items: flex-start; gap: 12px; padding: 16px;
+                 background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; }
+  .confirm-row input[type=checkbox] { width: 18px; height: 18px; flex-shrink: 0;
+                                      margin-top: 2px; accent-color: var(--cyan); cursor: pointer; }
   .confirm-row label { font-size: .875rem; color: var(--off-white); cursor: pointer; margin:0; }
-
-  /* ── SUBMIT ── */
-  .submit-btn {
-    width: 100%; padding: 15px;
-    background: linear-gradient(135deg, var(--blue-bright), var(--blue));
-    color: var(--white); border: none; border-radius: 10px;
-    font-size: 1rem; font-weight: 800; letter-spacing: .06em;
-    text-transform: uppercase; cursor: pointer;
-    transition: opacity .15s, box-shadow .15s;
-    box-shadow: 0 4px 20px rgba(79,85,232,.4);
-  }
-  .submit-btn:hover:not(:disabled) {
-    opacity: .9; box-shadow: 0 6px 28px rgba(79,85,232,.6);
-  }
+  .submit-btn { width: 100%; padding: 15px; margin-top: 20px;
+                background: linear-gradient(135deg, var(--blue-bright), var(--blue));
+                color: var(--white); border: none; border-radius: 10px;
+                font-size: 1rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+                cursor: pointer; transition: opacity .15s, box-shadow .15s;
+                box-shadow: 0 4px 20px rgba(79,85,232,.4); }
+  .submit-btn:hover:not(:disabled) { opacity: .9; box-shadow: 0 6px 28px rgba(79,85,232,.6); }
   .submit-btn:disabled { opacity: .4; cursor: not-allowed; }
 
-  .status {
-    padding: 14px 18px; border-radius: 10px; margin-top: 14px;
-    font-size: .9rem; font-weight: 600; display: none;
-  }
+  .status { padding: 14px 18px; border-radius: 10px; margin-top: 14px;
+            font-size: .9rem; font-weight: 600; display: none; }
   .status.success { background: var(--success-dim); color: var(--success);
                     border: 1px solid rgba(52,211,153,.3); display: block; }
   .status.error   { background: var(--danger-dim); color: var(--danger);
@@ -232,16 +142,12 @@
   .status.loading { background: var(--cyan-dim); color: var(--cyan);
                     border: 1px solid rgba(0,200,232,.3); display: block; }
 
-  /* ── FOOTER ── */
-  footer {
-    text-align: center; padding: 20px;
-    color: var(--muted); font-size: .78rem; border-top: 1px solid var(--border);
-  }
+  footer { text-align: center; padding: 20px; color: var(--muted);
+           font-size: .78rem; border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
     <span class="brand-name">Running Pony</span>
@@ -254,27 +160,19 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Expense Reimbursement</h1>
-  <p>Submit out-of-pocket expenses related to video production projects. Complete all fields accurately — receipts required.</p>
+  <p>Submit out-of-pocket expenses related to video production projects. Upload a receipt for each line item — complete all fields accurately.</p>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
 
-  <!-- Requester info -->
+  <!-- Requester -->
   <div class="card">
     <p class="section-label">Requester Information</p>
     <div class="grid2">
-      <div>
-        <label>Full Name</label>
-        <input id="submitterName" type="text" placeholder="Jane Smith">
-      </div>
-      <div>
-        <label>Email Address</label>
-        <input id="submitterEmail" type="email" placeholder="jane@runningpony.com">
-      </div>
+      <div><label>Full Name</label><input id="submitterName" type="text" placeholder="Jane Smith"></div>
+      <div><label>Email Address</label><input id="submitterEmail" type="email" placeholder="jane@runningpony.com"></div>
     </div>
   </div>
 
@@ -285,41 +183,28 @@
       <table id="itemsTable">
         <thead>
           <tr>
-            <th style="width:120px">Date</th>
-            <th style="width:150px">Project / Code</th>
-            <th style="width:175px">Category</th>
-            <th style="width:100px">Amount ($)</th>
+            <th style="width:118px">Date</th>
+            <th style="width:140px">Project / Code</th>
+            <th style="width:168px">Category</th>
+            <th style="width:95px">Amount ($)</th>
             <th>Description / Purpose</th>
+            <th style="width:155px">Receipts</th>
             <th class="del-col"></th>
           </tr>
         </thead>
         <tbody id="itemsBody"></tbody>
         <tfoot>
-          <tr><td colspan="6"><button class="add-btn" onclick="addRow()">＋ Add Line Item</button></td></tr>
+          <tr><td colspan="7"><button class="add-btn" onclick="addRow()">＋ Add Line Item</button></td></tr>
         </tfoot>
       </table>
     </div>
     <div class="total-bar">Total: <span>$<span id="totalDisplay">0.00</span></span></div>
   </div>
 
-  <!-- File upload -->
-  <div class="card">
-    <p class="section-label">Receipts / Proof of Purchase</p>
-    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-      <svg width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-        <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M16 12l-4-4-4 4M12 8v8"/>
-      </svg>
-      <p><strong>Click to upload</strong> or drag &amp; drop</p>
-      <small>Images or PDFs — up to 50 MB each — multiple files accepted</small>
-      <input id="fileInput" type="file" accept="image/*,.pdf" multiple onchange="handleFiles(this.files)">
-    </div>
-    <div class="file-list" id="fileList"></div>
-  </div>
-
   <!-- Confirm & Submit -->
   <div class="card">
     <p class="section-label">Confirmation</p>
-    <div class="confirm-row" style="margin-bottom:20px">
+    <div class="confirm-row">
       <input type="checkbox" id="confirmCheck">
       <label for="confirmCheck">I confirm these expenses are legitimate, accurate, and directly related to the specified project. I understand that false claims may result in disciplinary action.</label>
     </div>
@@ -332,7 +217,7 @@
 <footer>© Running Pony Creative Agency — Internal Use Only</footer>
 
 <script>
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzslXjyrrynK1sy_Tj8jzINiRP4CUR8nKqBFT0rNu1JxcmpC02y7vFThQ6h84QjJj4/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlzl96ZnEv-M49ojyj50NwYrBSXIZTEM88Oo6xYbSk2cOWE18WaYCm8U3G98Bf6oPN/exec";
 
 const CATEGORIES = [
   "Food / Meals",
@@ -342,119 +227,174 @@ const CATEGORIES = [
   "Miscellaneous (specify in description)"
 ];
 
-let selectedFiles = [], rowCounter = 0;
+// rowFiles: { rowId: [File, ...] }
+const rowFiles = {};
+let rowCounter = 0;
+
 window.onload = () => addRow();
 
 function addRow() {
   rowCounter++;
   const id = rowCounter;
+  rowFiles[id] = [];
+
   const tr = document.createElement("tr");
   tr.id = `row-${id}`;
   tr.innerHTML = `
-    <td><input type="date" class="expense-date" required></td>
+    <td><input type="date" required></td>
     <td><input type="text" placeholder="e.g. PROJ-001" required></td>
     <td><select>${CATEGORIES.map(c=>`<option>${c}</option>`).join("")}</select></td>
     <td><input type="number" class="amount-input" step="0.01" min="0" placeholder="0.00" oninput="recalcTotal()" required></td>
     <td><input type="text" placeholder="Brief purpose of expense" required></td>
-    <td class="del-col"><button class="del-btn" onclick="removeRow(${id})" title="Remove">×</button></td>
+    <td class="receipt-col">
+      <input type="file" id="fileInput-${id}" accept="image/*,.pdf" multiple style="display:none"
+             onchange="handleRowFiles(${id}, this.files)">
+      <button class="receipt-upload-btn" onclick="document.getElementById('fileInput-${id}').click()">
+        ＋ Add Receipts
+      </button>
+      <div class="row-chips" id="chips-${id}"></div>
+    </td>
+    <td class="del-col"><button class="del-btn" onclick="removeRow(${id})">×</button></td>
   `;
   document.getElementById("itemsBody").appendChild(tr);
 }
 
 function removeRow(id) {
-  if (document.getElementById("itemsBody").children.length === 1) { alert("At least one line item is required."); return; }
+  if (document.getElementById("itemsBody").children.length === 1) {
+    alert("At least one line item is required."); return;
+  }
   document.getElementById(`row-${id}`).remove();
+  delete rowFiles[id];
   recalcTotal();
 }
 
 function recalcTotal() {
   const total = [...document.querySelectorAll(".amount-input")]
-    .reduce((s,i) => s + (parseFloat(i.value)||0), 0);
+    .reduce((s, i) => s + (parseFloat(i.value) || 0), 0);
   document.getElementById("totalDisplay").textContent = total.toFixed(2);
 }
 
-const dropZone = document.getElementById("dropZone");
-dropZone.addEventListener("dragover",  e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
-dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
-dropZone.addEventListener("drop", e => { e.preventDefault(); dropZone.classList.remove("drag-over"); handleFiles(e.dataTransfer.files); });
-
-function handleFiles(list) {
-  [...list].forEach(f => { if (!selectedFiles.find(x=>x.name===f.name&&x.size===f.size)) selectedFiles.push(f); });
-  renderFileList();
+function handleRowFiles(id, fileList) {
+  [...fileList].forEach(f => {
+    if (!rowFiles[id].find(x => x.name === f.name && x.size === f.size))
+      rowFiles[id].push(f);
+  });
+  renderRowChips(id);
+  // Reset the input so the same file can be re-added to another row if needed
+  document.getElementById(`fileInput-${id}`).value = "";
 }
-function removeFile(i) { selectedFiles.splice(i,1); renderFileList(); }
-function renderFileList() {
-  document.getElementById("fileList").innerHTML = selectedFiles.map((f,i)=>`
-    <div class="file-chip">
-      ${f.name} <span style="opacity:.5">(${(f.size/1024/1024).toFixed(1)} MB)</span>
-      <button onclick="removeFile(${i})">×</button>
-    </div>`).join("");
+
+function removeRowFile(id, idx) {
+  rowFiles[id].splice(idx, 1);
+  renderRowChips(id);
+}
+
+function renderRowChips(id) {
+  const files = rowFiles[id] || [];
+  document.getElementById(`chips-${id}`).innerHTML = files.map((f, i) => `
+    <div class="row-chip">
+      <span title="${f.name}">${f.name.length > 16 ? f.name.slice(0,14)+'…' : f.name}</span>
+      <button onclick="removeRowFile(${id}, ${i})" title="Remove">×</button>
+    </div>
+  `).join("");
 }
 
 function fileToBase64(f) {
-  return new Promise((res,rej)=>{
+  return new Promise((res, rej) => {
     const r = new FileReader();
-    r.onload = ()=>res(r.result.split(",")[1]);
-    r.onerror = ()=>rej(new Error("Could not read "+f.name));
+    r.onload  = () => res(r.result.split(",")[1]);
+    r.onerror = () => rej(new Error("Could not read " + f.name));
     r.readAsDataURL(f);
   });
 }
 
-function getItems() {
-  return [...document.getElementById("itemsBody").children].map(tr => {
-    const inp = tr.querySelectorAll("input, select");
-    return { date:inp[0].value, project:inp[1].value, category:inp[2].value, amount:inp[3].value, description:inp[4].value };
-  });
+function getRows() {
+  return [...document.getElementById("itemsBody").children];
 }
 
 function validate() {
   const name  = document.getElementById("submitterName").value.trim();
   const email = document.getElementById("submitterEmail").value.trim();
   if (!name)  { alert("Please enter your full name."); return false; }
-  if (!email||!/\S+@\S+\.\S+/.test(email)) { alert("Please enter a valid email."); return false; }
-  for (const [i,item] of getItems().entries()) {
-    if (!item.date)        { alert(`Row ${i+1}: Please select a date.`); return false; }
-    if (!item.project)     { alert(`Row ${i+1}: Please enter a project name/code.`); return false; }
-    if (!item.amount||isNaN(item.amount)||Number(item.amount)<=0) { alert(`Row ${i+1}: Please enter a valid amount.`); return false; }
-    if (!item.description) { alert(`Row ${i+1}: Please enter a description.`); return false; }
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { alert("Please enter a valid email."); return false; }
+
+  for (const [i, tr] of getRows().entries()) {
+    const inp = tr.querySelectorAll("input:not([type=file]), select");
+    if (!inp[0].value)                              { alert(`Row ${i+1}: Please select a date.`); return false; }
+    if (!inp[1].value.trim())                       { alert(`Row ${i+1}: Please enter a project name/code.`); return false; }
+    if (!inp[3].value || Number(inp[3].value) <= 0) { alert(`Row ${i+1}: Please enter a valid amount.`); return false; }
+    if (!inp[4].value.trim())                       { alert(`Row ${i+1}: Please enter a description.`); return false; }
   }
-  if (!document.getElementById("confirmCheck").checked) { alert("Please check the confirmation box."); return false; }
+
+  if (!document.getElementById("confirmCheck").checked) {
+    alert("Please check the confirmation box."); return false;
+  }
   return true;
 }
 
 async function submitForm() {
   if (!validate()) return;
+
   const btn = document.getElementById("submitBtn");
   btn.disabled = true;
-  showStatus("loading","⏳ Uploading receipts and submitting — please wait…");
+  showStatus("loading", "⏳ Uploading receipts and submitting — please wait…");
+
   try {
-    const files = await Promise.all(selectedFiles.map(async f=>({ name:f.name, mimeType:f.type, data:await fileToBase64(f) })));
-    const res = await fetch(APPS_SCRIPT_URL, { method:"POST", body:JSON.stringify({
-      submitterName:  document.getElementById("submitterName").value.trim(),
-      submitterEmail: document.getElementById("submitterEmail").value.trim(),
-      items: getItems(), files
-    })});
+    const items = await Promise.all(getRows().map(async tr => {
+      const id  = parseInt(tr.id.replace("row-", ""));
+      const inp = tr.querySelectorAll("input:not([type=file]), select");
+
+      const files = await Promise.all((rowFiles[id] || []).map(async f => ({
+        name:     f.name,
+        mimeType: f.type,
+        data:     await fileToBase64(f)
+      })));
+
+      return {
+        date:        inp[0].value,
+        project:     inp[1].value.trim(),
+        category:    inp[2].value,
+        amount:      inp[3].value,
+        description: inp[4].value.trim(),
+        files         // each item carries only its own receipts
+      };
+    }));
+
+    const res  = await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      body:   JSON.stringify({
+        submitterName:  document.getElementById("submitterName").value.trim(),
+        submitterEmail: document.getElementById("submitterEmail").value.trim(),
+        items
+      })
+    });
+
     const json = await res.json();
     if (json.success) {
-      showStatus("success",`✅ Submitted! ${json.filesUploaded} receipt(s) uploaded to Drive. You'll receive confirmation by email.`);
+      showStatus("success", `✅ Submitted! ${json.filesUploaded} receipt(s) uploaded to Drive. Each receipt is linked to its line item in the log.`);
       resetForm();
-    } else throw new Error(json.error||"Unknown error");
-  } catch(err) {
-    showStatus("error","❌ Submission failed: "+err.message+". Please try again or contact your manager.");
+    } else throw new Error(json.error || "Unknown error");
+
+  } catch (err) {
+    showStatus("error", "❌ Submission failed: " + err.message + ". Please try again or contact your manager.");
     btn.disabled = false;
   }
 }
 
-function showStatus(type,msg){ const el=document.getElementById("statusMsg"); el.className=`status ${type}`; el.textContent=msg; }
+function showStatus(type, msg) {
+  const el = document.getElementById("statusMsg");
+  el.className = `status ${type}`;
+  el.textContent = msg;
+}
 
-function resetForm(){
-  document.getElementById("submitterName").value="";
-  document.getElementById("submitterEmail").value="";
-  document.getElementById("itemsBody").innerHTML="";
-  rowCounter=0; addRow();
-  selectedFiles=[]; renderFileList();
-  document.getElementById("confirmCheck").checked=false;
-  document.getElementById("submitBtn").disabled=false;
+function resetForm() {
+  document.getElementById("submitterName").value  = "";
+  document.getElementById("submitterEmail").value = "";
+  document.getElementById("itemsBody").innerHTML  = "";
+  Object.keys(rowFiles).forEach(k => delete rowFiles[k]);
+  rowCounter = 0; addRow();
+  document.getElementById("confirmCheck").checked = false;
+  document.getElementById("submitBtn").disabled   = false;
   recalcTotal();
 }
 </script>
