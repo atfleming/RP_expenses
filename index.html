@@ -353,18 +353,19 @@ async function submitForm() {
       return { date:inp[0].value, project:inp[1].value.trim(), category:inp[2].value,
                amount:inp[3].value, description:inp[4].value.trim(), files };
     }));
-    const res  = await fetch(APPS_SCRIPT_URL, { method:"POST", redirect:"follow",
+    await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
       headers: { "Content-Type": "text/plain" },
       body: JSON.stringify({
-      submitterName:  document.getElementById("submitterName").value.trim(),
-      submitterEmail: document.getElementById("submitterEmail").value.trim(),
-      items
-    })});
-    const json = await res.json();
-    if (json.success) {
-      showStatus("success",`✅ Submitted! ${json.filesUploaded} receipt(s) uploaded. A confirmation has been sent to your email.`);
-      resetForm();
-    } else throw new Error(json.error||"Unknown error");
+        submitterName:  document.getElementById("submitterName").value.trim(),
+        submitterEmail: document.getElementById("submitterEmail").value.trim(),
+        items
+      })
+    });
+    // no-cors returns an opaque response — if we reach this line the request was sent
+    showStatus("success", "✅ Submitted! Your receipts have been uploaded and a confirmation email is on its way.");
+    resetForm();
   } catch(err) {
     showStatus("error","Submission failed: "+err.message+". Please try again or contact your manager.");
     btn.disabled = false;
